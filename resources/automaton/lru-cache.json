@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.util.LruCache.evictAll()",
+            "android.util.LruCache.<init>(I)",
+            "android.app.Activity.onDestroy()"
+        ],
+        "performed": [
+            "android.util.LruCache.<init>(I)",
+            "android.util.LruCache.evictAll()",
+            "android.app.Activity.onDestroy();android.util.LruCache.evictAll()",
+            "android.app.Activity.onDestroy()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onDestroy()",
+            "perform": "android.app.Activity.onDestroy();android.util.LruCache.evictAll()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.util.LruCache.<init>(I)",
+            "perform": "android.util.LruCache.<init>(I)"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.util.LruCache.evictAll()",
+            "perform": "android.util.LruCache.evictAll()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onDestroy()",
+            "perform": "android.app.Activity.onDestroy()"
+        }
+    ]
+}

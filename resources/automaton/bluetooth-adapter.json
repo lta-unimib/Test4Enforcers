@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.bluetooth.BluetoothAdapter.disable()",
+            "android.app.Activity.onDestroy()",
+            "android.bluetooth.BluetoothAdapter.enable()"
+        ],
+        "performed": [
+            "android.app.Activity.onDestroy();android.bluetooth.BluetoothAdapter.disable()",
+            "android.app.Activity.onDestroy()",
+            "android.bluetooth.BluetoothAdapter.disable()",
+            "android.bluetooth.BluetoothAdapter.enable()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onDestroy()",
+            "perform": "android.app.Activity.onDestroy();android.bluetooth.BluetoothAdapter.disable()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.bluetooth.BluetoothAdapter.enable()",
+            "perform": "android.bluetooth.BluetoothAdapter.enable()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.bluetooth.BluetoothAdapter.disable()",
+            "perform": "android.bluetooth.BluetoothAdapter.disable()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onDestroy()",
+            "perform": "android.app.Activity.onDestroy()"
+        }
+    ]
+}

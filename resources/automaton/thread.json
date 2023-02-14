@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "java.lang.Thread.<init>()",
+            "java.lang.Thread.interrupt()",
+            "android.app.Service.onDestroy()"
+        ],
+        "performed": [
+            "java.lang.Thread.<init>()",
+            "java.lang.Thread.interrupt()",
+            "android.app.Service.onDestroy()",
+            "android.app.Service.onDestroy();java.lang.Thread.interrupt()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Service.onDestroy()",
+            "perform": "android.app.Service.onDestroy();java.lang.Thread.interrupt()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "java.lang.Thread.<init>()",
+            "perform": "java.lang.Thread.<init>()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "java.lang.Thread.interrupt()",
+            "perform": "java.lang.Thread.interrupt()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Service.onDestroy()",
+            "perform": "android.app.Service.onDestroy()"
+        }
+    ]
+}

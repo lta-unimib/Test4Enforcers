@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S0",
+        "S1"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.hardware.SensorManager().registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;II)",
+            "android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)",
+            "android.app.Activity.onPause()"
+        ],
+        "performed": [
+            "android.app.Activity.onPause();android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)",
+            "android.hardware.SensorManager().registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;II)",
+            "android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)",
+            "android.app.Activity.onPause()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.hardware.SensorManager().registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;II)",
+            "perform": "android.hardware.SensorManager().registerListener(Landroid/hardware/SensorEventListener;Landroid/hardware/Sensor;II)"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)",
+            "perform": "android.hardware.SensorManager().unregisterListener(Landroid/hardware/SensorEventListener;)"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

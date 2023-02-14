@@ -1,0 +1,22 @@
+{
+    "states": [
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.content.res.Resources().getDrawable(I)"
+        ],
+        "performed": [
+            "android.support.v7.widget.AppCompatDrawableManager.get().getDrawable(I)"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.content.res.Resources().getDrawable(I)",
+            "perform": "android.support.v7.widget.AppCompatDrawableManager.get().getDrawable(I)"
+        }
+    ]
+}

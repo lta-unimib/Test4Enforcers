@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.location.LocationManager().requestLocationUpdates(Ljava/lang/String;JFLandroid/location/LocationListener;)",
+            "android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)",
+            "android.app.Activity.onPause()"
+        ],
+        "performed": [
+            "android.location.LocationManager().requestLocationUpdates(Ljava/lang/String;JFLandroid/location/LocationListener;)",
+            "android.app.Activity.onPause()",
+            "android.app.Activity.onPause();android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)",
+            "android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.location.LocationManager().requestLocationUpdates(Ljava/lang/String;JFLandroid/location/LocationListener;)",
+            "perform": "android.location.LocationManager().requestLocationUpdates(Ljava/lang/String;JFLandroid/location/LocationListener;)"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)",
+            "perform": "android.location.LocationManager().removeUpdates(Landroid/location/LocationListener;)"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

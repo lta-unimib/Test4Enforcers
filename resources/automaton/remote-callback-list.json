@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)",
+            "android.app.Activity.onPause()",
+            "android.os.RemoteCallbackList().register(Landroid/os/IInterface;)"
+        ],
+        "performed": [
+            "android.app.Activity.onPause();android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)",
+            "android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)",
+            "android.app.Activity.onPause()",
+            "android.os.RemoteCallbackList().register(Landroid/os/IInterface;)"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.os.RemoteCallbackList().register(Landroid/os/IInterface;)",
+            "perform": "android.os.RemoteCallbackList().register(Landroid/os/IInterface;)"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)",
+            "perform": "android.os.RemoteCallbackList().unregister(Landroid/os/IInterface;)"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

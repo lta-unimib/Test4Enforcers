@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.os.PowerManager$WakeLock.acquire()",
+            "android.os.PowerManager$WakeLock.release()",
+            "android.app.Activity.onPause()"
+        ],
+        "performed": [
+            "android.app.Activity.onPause()",
+            "android.app.Activity.onPause();android.os.PowerManager$WakeLock.release()",
+            "android.os.PowerManager$WakeLock.acquire()",
+            "android.os.PowerManager$WakeLock.release()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.os.PowerManager$WakeLock.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.os.PowerManager$WakeLock.acquire()",
+            "perform": "android.os.PowerManager$WakeLock.acquire()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.os.PowerManager$WakeLock.release()",
+            "perform": "android.os.PowerManager$WakeLock.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S0",
+        "S1"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.app.Activity.onPause()",
+            "android.media.MediaPlayer.release()",
+            "android.media.MediaPlayer.<init>()"
+        ],
+        "performed": [
+            "android.app.Activity.onPause();android.media.MediaPlayer.release()",
+            "android.app.Activity.onPause()",
+            "android.media.MediaPlayer.release()",
+            "android.media.MediaPlayer.<init>()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.media.MediaPlayer.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.media.MediaPlayer.<init>()",
+            "perform": "android.media.MediaPlayer.<init>()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.media.MediaPlayer.release()",
+            "perform": "android.media.MediaPlayer.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

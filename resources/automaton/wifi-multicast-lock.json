@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.app.Activity.onPause()",
+            "android.net.wifi.WifiManager$MulticastLock.acquire()",
+            "android.net.wifi.WifiManager$MulticastLock.release()"
+        ],
+        "performed": [
+            "android.net.wifi.WifiManager$MulticastLock.release()",
+            "android.net.wifi.WifiManager$MulticastLock.acquire()",
+            "android.app.Activity.onPause()",
+            "android.app.Activity.onPause();android.net.wifi.WifiManager$MulticastLock.release()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.net.wifi.WifiManager$MulticastLock.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.net.wifi.WifiManager$MulticastLock.acquire()",
+            "perform": "android.net.wifi.WifiManager$MulticastLock.acquire()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.net.wifi.WifiManager$MulticastLock.release()",
+            "perform": "android.net.wifi.WifiManager$MulticastLock.release()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

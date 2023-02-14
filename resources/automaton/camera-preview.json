@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S1",
+        "S0"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.hardware.Camera.stopPreview()",
+            "android.app.Activity.onPause()",
+            "android.hardware.Camera.startPreview()"
+        ],
+        "performed": [
+            "android.app.Activity.onPause();android.hardware.Camera.stopPreview()",
+            "android.hardware.Camera.stopPreview()",
+            "android.app.Activity.onPause()",
+            "android.hardware.Camera.startPreview()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause();android.hardware.Camera.stopPreview()"
+        },
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.hardware.Camera.startPreview()",
+            "perform": "android.hardware.Camera.startPreview()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.hardware.Camera.stopPreview()",
+            "perform": "android.hardware.Camera.stopPreview()"
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.app.Activity.onPause()",
+            "perform": "android.app.Activity.onPause()"
+        }
+    ]
+}

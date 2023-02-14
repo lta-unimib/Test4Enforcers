@@ -1,0 +1,46 @@
+{
+    "states": [
+        "S0",
+        "S1"
+    ],
+    "initial_state": "S0",
+    "actions": {
+        "intercepted": [
+            "android.hardware.Camera.lock()",
+            "android.media.MediaRecorder.start()",
+            "android.media.MediaRecorder.stop()"
+        ],
+        "performed": [
+            "",
+            "android.media.MediaRecorder.start()",
+            "android.hardware.Camera.lock()",
+            "android.media.MediaRecorder.stop()"
+        ]
+    },
+    "transitions": [
+        {
+            "source": "S0",
+            "target": "S1",
+            "intercept": "android.media.MediaRecorder.start()",
+            "perform": "android.media.MediaRecorder.start()"
+        },
+        {
+            "source": "S1",
+            "target": "S0",
+            "intercept": "android.media.MediaRecorder.stop()",
+            "perform": "android.media.MediaRecorder.stop()"
+        },
+        {
+            "source": "S1",
+            "target": "S1",
+            "intercept": "android.hardware.Camera.lock()",
+            "perform": ""
+        },
+        {
+            "source": "S0",
+            "target": "S0",
+            "intercept": "android.hardware.Camera.lock()",
+            "perform": "android.hardware.Camera.lock()"
+        }
+    ]
+}
